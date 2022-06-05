@@ -6,5 +6,8 @@ class Batman(Hero):
         super().__init__(name, demage, health, mana, money)
 
     def special_attack(self, other):
-        other.health -= self.damage * 2
-        self.health -= self.damage * 0.1
+        if self.is_alive():
+            other.health -= self.damage * 2
+            self.health -= self.damage * 0.1
+            return
+        print(f"{self.name} is dead!")

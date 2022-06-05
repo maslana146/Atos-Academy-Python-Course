@@ -6,5 +6,8 @@ class Hulk(Hero):
         super().__init__(name, damage, health, mana, money)
 
     def special_attack(self, other):
-        other.health -= self.damage * 1.5
-        self.health += self.health * 1.5
+        if self.is_alive():
+            other.health -= self.damage * 1.5
+            self.health += self.health * 1.5
+            return
+        print(f"{self.name} is dead!")
